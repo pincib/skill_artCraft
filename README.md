@@ -2,7 +2,7 @@
 
 Coleção de **Agent Skills** e integração **MCP (Model Context Protocol)** para automatizar a suíte de aplicativos criativos open-source **[ArtCraft](https://getartcraft.com)** (escrita em Rust pela [`storytold`](https://github.com/storytold)).
 
-Projetado para funcionar perfeitamente tanto no **Google Antigravity (Gemini)** quanto no **OpenAI Codex / ChatGPT Desktop**.
+Projetado para funcionar com 1 comando tanto no **Google Antigravity (Gemini)** quanto no **OpenAI Codex / ChatGPT Desktop**.
 
 ---
 
@@ -17,60 +17,54 @@ Projetado para funcionar perfeitamente tanto no **Google Antigravity (Gemini)** 
 
 ---
 
-## 🚀 Como Instalar
+## 🚀 Como Instalar (NPX / PNPM)
 
-Escolha a forma mais conveniente para o seu ambiente:
+Qualquer pessoa em qualquer projeto pode instalar diretamente via GitHub com **um único comando**, sem precisar clonar manualmente:
 
-### 1. Via Gerenciador Oficial de Skills (`npx skills add`)
-Instale diretamente em qualquer projeto com o padrão aberto:
+### 1. No Projeto Atual (`./.agents/skills/`)
 ```bash
-# npm / npx
-npx skills add <seu-usuario>/artcraft-skills
+# Usando npx:
+npx github:pincib/skill_artCraft
 
-# pnpm
-pnpm dlx skills add <seu-usuario>/artcraft-skills
+# Usando pnpm:
+pnpm dlx github:pincib/skill_artCraft
+
+# Ou usando a CLI de skills da comunidade:
+npx skills add pincib/skill_artCraft
+pnpm dlx skills add pincib/skill_artCraft
+```
+
+### 2. Globalmente na Máquina (Antigravity e Codex)
+```bash
+# Usando npx:
+npx github:pincib/skill_artCraft --global
+
+# Usando pnpm:
+pnpm dlx github:pincib/skill_artCraft --global
 ```
 
 ---
 
-### 2. Via Git Clone & Script Automatizado
+## 📦 Instalação via Git Clone
 
-Clone o repositório e rode o instalador:
+Se preferir clonar o repositório:
 
 ```bash
-git clone https://github.com/<seu-usuario>/artcraft-skills.git
-cd artcraft-skills
+git clone https://github.com/pincib/skill_artCraft.git
+cd skill_artCraft
 ```
 
-#### No Windows (PowerShell):
-```powershell
-# Instala globalmente para Antigravity E Codex (Recomendado):
-.\install.ps1 -All
-
-# Ou escolha um específico:
-.\install.ps1 -Antigravity   # Instala em ~/.gemini/config/skills/
-.\install.ps1 -Codex         # Instala em ~/.agents/skills/
-.\install.ps1 -Local         # Instala apenas no projeto atual (./.agents/skills/)
-```
-
-#### No Linux / macOS (Bash):
-```bash
-chmod +x install.sh
-./install.sh                # Instala globalmente para ambos
-# ou: ./install.sh --antigravity | ./install.sh --codex | ./install.sh --local
-```
-
----
-
-### 3. Via Pacote NPM Próprio (`package-artcraft-skills`)
-Se você publicar este repositório no NPM registry:
-```bash
-# Execução direta via npx
-npx artcraft-skills
-
-# Ou como dependência de desenvolvimento no seu projeto:
-npm install -D artcraft-skills
-```
+- **No Windows (PowerShell):**
+  ```powershell
+  .\install.ps1 -All       # Instala globalmente para Antigravity e Codex
+  .\install.ps1 -Local     # Instala no projeto atual
+  ```
+- **No Linux / macOS (Bash):**
+  ```bash
+  chmod +x install.sh
+  ./install.sh             # Instala globalmente
+  ./install.sh --local     # Instala no projeto atual
+  ```
 
 ---
 

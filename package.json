@@ -1,0 +1,32 @@
+{
+  "name": "artcraft-skills",
+  "version": "1.0.0",
+  "description": "ArtCraft Agent Skills for Google Antigravity and OpenAI Codex (Video, Imagem, Pitchdeck, Frontend)",
+  "main": "bin/cli.js",
+  "bin": {
+    "artcraft-skills": "./bin/cli.js"
+  },
+  "files": [
+    "bin",
+    ".agents/skills",
+    "README.md",
+    "install.ps1",
+    "install.sh"
+  ],
+  "keywords": [
+    "agentskills",
+    "antigravity",
+    "codex",
+    "openai",
+    "gemini",
+    "artcraft",
+    "mcp",
+    "skills"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/storytold/artcraft"
+  }
+}
