@@ -1,6 +1,6 @@
 {
   "name": "artcraft-skills",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ArtCraft Agent Skills for Google Antigravity and OpenAI Codex (Video, Imagem, Pitchdeck, Frontend)",
   "main": "bin/cli.js",
   "bin": {
@@ -9,9 +9,12 @@
   "files": [
     "bin",
     ".agents/skills",
+    ".agents/plugins/artcraft-suite",
+    ".agents/plugins/marketplace.json",
     "README.md",
     "install.ps1",
-    "install.sh"
+    "install.sh",
+    "setup-artcraft.ps1"
   ],
   "keywords": [
     "agentskills",
@@ -23,10 +26,18 @@
     "mcp",
     "skills"
   ],
-  "author": "",
+  "author": "pincib",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/storytold/artcraft"
+    "url": "https://github.com/pincib/skill_artCraft"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "validate": "python scripts/validate_repo.py",
+    "pack:check": "npm pack --dry-run"
   }
 }

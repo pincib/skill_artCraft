@@ -1,0 +1,9 @@
+config:
+  default: true
+  MD013: false
+  MD041: false
+globs:
+  - "README.md"
+  - ".agents/skills/**/SKILL.md"
+  - ".agents/skills/**/references/*.md"
+  - ".agents/plugins/artcraft-suite/rules/AGENTS.md"

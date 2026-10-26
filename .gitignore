@@ -1,14 +1,48 @@
-# Dependências e caches
+# ==============================================================================
+# Dependências e Gerenciadores de Pacotes
+# ==============================================================================
 node_modules/
-.tmp/
-*.log
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Arquivos de teste temporários
+# ==============================================================================
+# Caches, Arquivos Temporários e Logs
+# ==============================================================================
+.tmp/
+temp/
+*.log
+*.tmp
+.cache/
+
+# ==============================================================================
+# Artefatos Audiovisuais, Renderizações e Arquivos Pesados de Teste
+# ==============================================================================
+renders/
+exports/
 video/
 *.jpg
+*.jpeg
 *.png
+*.webp
 *.mp4
+*.mov
+*.wav
+*.mp3
+*.prores
 
-# Sistema operacional
+# ==============================================================================
+# Arquivos do Sistema Operacional
+# ==============================================================================
 Thumbs.db
+Desktop.ini
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# ==============================================================================
+# Relatórios de Auditoria e Análise Interna (Ignorados pelo Git)
+# ==============================================================================
+ANALISE_E_MELHORIAS_ARTCRAFT.md

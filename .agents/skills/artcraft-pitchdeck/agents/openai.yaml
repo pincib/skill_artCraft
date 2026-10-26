@@ -1,4 +1,6 @@
 interface:
-  display_name: ArtCraft Pitch Deck
-  short_description: Slides, diagramação editorial e compilação de PDFs com DeckCraft, DesignCraft e PdfCraft via MCP.
-  default_prompt: Use o ArtCraft Pitch Deck para criar slides corporativos, one-pagers ou compilar PDFs executivos.
+  display_name: "ArtCraft Pitch Deck"
+  short_description: "Apresentações, relatórios e PDFs executivos."
+  default_prompt: "Use $artcraft-pitchdeck para estruturar uma apresentação e revisar o PDF final."
+policy:
+  allow_implicit_invocation: true

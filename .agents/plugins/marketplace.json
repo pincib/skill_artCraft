@@ -1,0 +1,20 @@
+{
+  "name": "artcraft-local-plugins",
+  "interface": {
+    "displayName": "ArtCraft Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "artcraft-suite",
+      "source": {
+        "source": "local",
+        "path": "./.agents/plugins/artcraft-suite"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
+    }
+  ]
+}

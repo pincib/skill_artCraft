@@ -1,4 +1,6 @@
 interface:
-  display_name: ArtCraft Imagem
-  short_description: Revelação RAW, edição raster e desenho vetorial com LightCraft, PhotoCraft e VectorCraft via MCP.
-  default_prompt: Use o ArtCraft Imagem para tratar fotos, manipular camadas PSD ou desenhar vetores SVG com PhotoCraft, LightCraft e VectorCraft.
+  display_name: "ArtCraft Imagem"
+  short_description: "Revelação RAW, edição raster e vetorial."
+  default_prompt: "Use $artcraft-image para tratar uma foto ou criar uma composição vetorial."
+policy:
+  allow_implicit_invocation: true

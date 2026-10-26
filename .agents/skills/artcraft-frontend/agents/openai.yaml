@@ -1,4 +1,6 @@
 interface:
-  display_name: ArtCraft Frontend UI
-  short_description: Design de UI, prototipagem, design tokens e handoff com FigCraft e DesignCraft via MCP.
-  default_prompt: Use o ArtCraft Frontend UI para desenhar telas, exportar assets para web ou gerar documentação de design system.
+  display_name: "ArtCraft Frontend"
+  short_description: "Prototipagem de UI, tokens e handoff."
+  default_prompt: "Use $artcraft-frontend para prototipar uma interface e preparar o handoff."
+policy:
+  allow_implicit_invocation: true

@@ -1,36 +1,27 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
-SKILLS=("artcraft-video" "artcraft-image" "artcraft-pitchdeck" "artcraft-frontend")
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SRC_DIR="$SCRIPT_DIR/.agents/skills"
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cli="$script_dir/bin/cli.js"
 
-if [ ! -d "$SRC_DIR" ]; then
-  SRC_DIR="$SCRIPT_DIR/package-artcraft-skills/skills"
+if ! command -v node >/dev/null 2>&1; then
+  echo "Node.js is required. Install Node.js and run this script again." >&2
+  exit 1
+fi
+if [[ ! -f "$cli" ]]; then
+  echo "ArtCraft CLI not found: $cli" >&2
+  exit 1
 fi
 
-TARGETS=()
-
-if [[ "$1" == "--antigravity" ]]; then
-  TARGETS+=("$HOME/.gemini/config/skills")
-elif [[ "$1" == "--codex" ]]; then
-  TARGETS+=("$HOME/.agents/skills")
-elif [[ "$1" == "--local" ]]; then
-  TARGETS+=("$PWD/.agents/skills")
-else
-  TARGETS+=("$HOME/.gemini/config/skills" "$HOME/.agents/skills")
-fi
-
-for TARGET in "${TARGETS[@]}"; do
-  echo "📁 Instalando em: $TARGET"
-  mkdir -p "$TARGET"
-  for SKILL in "${SKILLS[@]}"; do
-    if [ -d "$SRC_DIR/$SKILL" ]; then
-      cp -r "$SRC_DIR/$SKILL" "$TARGET/"
-      echo "  ✅ $SKILL instalado com sucesso!"
-    fi
-  done
+args=("$@")
+has_target=false
+for arg in "${args[@]}"; do
+  case "$arg" in
+    --antigravity|--codex|--local|--global|--all) has_target=true ;;
+  esac
 done
+if [[ "$has_target" == false ]]; then
+  args+=(--global)
+fi
 
-echo ""
-echo "🎉 Instalação concluída com sucesso!"
+exec node "$cli" "${args[@]}"

@@ -1,13 +1,12 @@
 <#
 .SYNOPSIS
-    Script de instalação das ArtCraft Agent Skills no Windows.
+    Instala as skills ArtCraft ou o plugin ArtCraft para Antigravity.
 .DESCRIPTION
-    Instala as skills para o Google Antigravity, OpenAI Codex ou no projeto local.
+    Encaminha a instalação para a CLI Node compartilhada com install.sh e npx.
 .EXAMPLE
-    .\install.ps1 -Antigravity
-    .\install.ps1 -Codex
-    .\install.ps1 -Local
     .\install.ps1 -All
+.EXAMPLE
+    .\install.ps1 -Antigravity -Local
 #>
 
 param(
@@ -15,54 +14,45 @@ param(
     [switch]$Codex,
     [switch]$Local,
     [switch]$All,
-    [switch]$Force
+    [Alias('Update')][switch]$Force,
+    [switch]$Uninstall,
+    [switch]$AllowUnconfined,
+    [string]$Workspace,
+    [string]$HomeDirectory,
+    [string[]]$AppDir
 )
 
-$ErrorActionPreference = "Stop"
-
-$skills = @("artcraft-video", "artcraft-image", "artcraft-pitchdeck", "artcraft-frontend")
-$srcDir = Join-Path $PSScriptRoot ".agents\skills"
-if (-not (Test-Path $srcDir)) {
-    $srcDir = Join-Path $PSScriptRoot "package-artcraft-skills\skills"
+$ErrorActionPreference = 'Stop'
+$node = Get-Command node -ErrorAction SilentlyContinue
+if (-not $node) {
+    throw 'Node.js is required. Install Node.js and run this script again.'
 }
 
-if (-not (Test-Path $srcDir)) {
-    Write-Error "Diretório de skills não encontrado em $srcDir."
-    exit 1
+$cli = Join-Path $PSScriptRoot 'bin\cli.js'
+if (-not (Test-Path -LiteralPath $cli -PathType Leaf)) {
+    throw "ArtCraft CLI not found: $cli"
 }
 
-$targets = @()
-
+$arguments = @()
 if ($All) {
-    $targets += Join-Path $HOME ".gemini\config\skills"
-    $targets += Join-Path $HOME ".agents\skills"
-} else {
-    if ($Antigravity) { $targets += Join-Path $HOME ".gemini\config\skills" }
-    if ($Codex)       { $targets += Join-Path $HOME ".agents\skills" }
-    if ($Local)       { $targets += Join-Path (Get-Location).Path ".agents\skills" }
+    $arguments += '--global'
+} elseif ($Local) {
+    $arguments += '--local'
+} elseif (-not $Antigravity -and -not $Codex) {
+    $arguments += '--global'
 }
-
-if ($targets.Count -eq 0) {
-    Write-Host "Nenhum alvo especificado. Usando o padrão: -All (Antigravity + Codex)" -ForegroundColor Yellow
-    $targets += Join-Path $HOME ".gemini\config\skills"
-    $targets += Join-Path $HOME ".agents\skills"
+if (-not $All) {
+    if ($Antigravity) { $arguments += '--antigravity' }
+    if ($Codex) { $arguments += '--codex' }
 }
+if ($Force) { $arguments += '--update' }
+if ($Uninstall) { $arguments += '--uninstall' }
+if ($AllowUnconfined) { $arguments += '--allow-unconfined' }
+if ($Workspace) { $arguments += @('--workspace', $Workspace) }
+if ($HomeDirectory) { $arguments += @('--home', $HomeDirectory) }
+foreach ($directory in $AppDir) { $arguments += @('--app-dir', $directory) }
 
-foreach ($target in $targets) {
-    Write-Host "`n📁 Instalando em: $target" -ForegroundColor Cyan
-    New-Item -ItemType Directory -Force -Path $target | Out-Null
-
-    foreach ($s in $skills) {
-        $sourcePath = Join-Path $srcDir $s
-        $destPath = Join-Path $target $s
-        if (Test-Path $sourcePath) {
-            Copy-Item -Recurse -Force -Path $sourcePath -Destination $destPath
-            Write-Host "  ✅ $s instalado com sucesso!" -ForegroundColor Green
-        } else {
-            Write-Warning "Skill $s não encontrada em $sourcePath."
-        }
-    }
+& $node.Source $cli @arguments
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
 }
-
-Write-Host "`n🎉 Instalação concluída com sucesso!" -ForegroundColor Green
-Write-Host "Reinicie sua sessão do agente (Antigravity ou Codex) para que as novas skills sejam detectadas."
