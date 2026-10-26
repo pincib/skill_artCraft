@@ -1,0 +1,93 @@
+{
+  "mcpServers": {
+    "effectcraft": {
+      "command": "C:/Program Files/EffectCraft/effectcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--automation-read-root",
+        "C:/Users/berna/Downloads/teste_skill",
+        "--automation-write-root",
+        "C:/Users/berna/Downloads/teste_skill"
+      ]
+    },
+    "filmcraft": {
+      "command": "C:/Program Files/FilmCraft/filmcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--automation-read-root",
+        "C:/Users/berna/Downloads/teste_skill",
+        "--automation-write-root",
+        "C:/Users/berna/Downloads/teste_skill"
+      ]
+    },
+    "lightcraft": {
+      "command": "C:/Program Files/LightCraft/lightcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--compact"
+      ]
+    },
+    "photocraft": {
+      "command": "C:/Program Files/PhotoCraft/photocraft-cli.exe",
+      "args": [
+        "mcp",
+        "--automation-read-root",
+        "C:/Users/berna/Downloads/teste_skill",
+        "--automation-write-root",
+        "C:/Users/berna/Downloads/teste_skill"
+      ]
+    },
+    "vectorcraft": {
+      "command": "C:/Program Files/VectorCraft/vectorcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--headless",
+        "--automation-read-root",
+        "C:/Users/berna/Downloads/teste_skill",
+        "--automation-write-root",
+        "C:/Users/berna/Downloads/teste_skill"
+      ]
+    },
+    "deckcraft": {
+      "command": "C:/Program Files/DeckCraft/deckcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--automation-read-root",
+        "C:/Users/berna/Downloads/teste_skill",
+        "--automation-write-root",
+        "C:/Users/berna/Downloads/teste_skill"
+      ]
+    },
+    "designcraft": {
+      "command": "C:/Program Files/DesignCraft/designcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--automation-read-root",
+        "C:/Users/berna/Downloads/teste_skill",
+        "--automation-write-root",
+        "C:/Users/berna/Downloads/teste_skill"
+      ]
+    },
+    "pdfcraft": {
+      "command": "C:/Program Files/PdfCraft/pdfcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--compact",
+        "--automation-read-root",
+        "C:/Users/berna/Downloads/teste_skill",
+        "--automation-write-root",
+        "C:/Users/berna/Downloads/teste_skill"
+      ]
+    },
+    "figcraft": {
+      "command": "C:/Program Files/FigCraft/figcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--automation-read-root",
+        "C:/Users/berna/Downloads/teste_skill",
+        "--automation-write-root",
+        "C:/Users/berna/Downloads/teste_skill"
+      ]
+    }
+  }
+}

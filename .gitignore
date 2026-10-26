@@ -1,0 +1,14 @@
+# Dependências e caches
+node_modules/
+.tmp/
+*.log
+
+# Arquivos de teste temporários
+video/
+*.jpg
+*.png
+*.mp4
+
+# Sistema operacional
+Thumbs.db
+.DS_Store

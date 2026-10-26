@@ -1,0 +1,4 @@
+interface:
+  display_name: ArtCraft Video
+  short_description: Criação, edição e renderização de vídeo e VFX com FilmCraft e EffectCraft via MCP.
+  default_prompt: Use o ArtCraft Video para montar cortes, motion graphics ou renderizar vídeos com FilmCraft e EffectCraft.

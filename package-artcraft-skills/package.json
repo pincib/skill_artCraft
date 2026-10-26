@@ -1,0 +1,11 @@
+{
+  "name": "artcraft-skills",
+  "version": "1.0.0",
+  "description": "Instalador de Agent Skills do ArtCraft para projetos Antigravity e Codex",
+  "bin": {
+    "artcraft-skills": "./bin/cli.js"
+  },
+  "keywords": ["agentskills", "antigravity", "codex", "artcraft", "mcp"],
+  "author": "",
+  "license": "MIT"
+}
